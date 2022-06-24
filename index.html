@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+  <html lang="ar">   
+       <head>    
+       <meta charset="utf-8">  
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">     <meta name="viewport" content="width=device-widthinitial-scale=1">   
+       <meta name="description" content="">  
+       <meta name="author" content="">  
+      
+       <title>Starter Template for Bootstrap</title>      
+        <!--<link href="bootstrap.css" rel="stylesheet">
+         <link href="bootstrap.min.css" rel="stylesheet">  -->
+        <link href="sistem.css" rel="stylesheet">
+          <style>
+      @font-face{
+ font-family:himi;
+ src:url('cocon-next-arabic.ttf');
+}
+  </style>
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+}/*
+ @font-face{
+ font-family:'cmsm';
+ src:url('hanimation-regular.ttf');
+}*/
+body{
+  font-family:'himi';
+  font-weight: bold ;
+  background: #fdf8ef;
+ 
+}
+.crud{
+  width: 90%;
+  margin: auto;
+}
+.crud input{
+  margin-top: 10px ;
+  font-size: 20px ;
+}
+.crud button{
+  border-radius: 10px ;
+  margin-top: 20px ;
+  font-size: 20px ;
+}
+.crud select{
+  margin-top: 10px ;
+  font-size: 20px ;
+  border: none ;
+  height: 40px ;
+  width: 150px ;
+  border-radius: 4px ;
+  background: #f5efdc;
+}
+.head{
+  text-align: center ;
+  text-transform: uppercase;
+  margin: 10px 0px ;
+}
+.head h2{
+  margin-top: 50px ;
+  margin-bottom: 10px ;
+  color: #fcba03;
+  font-weight: bold ;
+  font-size: 30px ;
+}
+input{
+  width: 100%;
+  height: 30px ;
+  outline: none ;
+  border: none ;
+  background:#f5efdc;
+  margin: 20px 0px ;
+  border-radius: 4px;
+  padding: 4px ;
+  transition-duration: 1.0s ;
+  font-family: himi ;
+}
+input:hover{
+  width: 104%;
+}
+input:focus{
+  background:#f8eac0;
+}
+.price input{
+  width: 15%;
+}
+#total{
+  background:red ;
+  padding: 20px 10px ;
+  color: black ;
+  border-radius: 4px;
+  font-weight: bold ;
+  font-size: 20px ;
+}
+#total::before {
+  content:'المجموع:';
+}
+button{
+  width: 100%;
+  height: 30px;
+  margin-top:2px;
+  border: none;
+  cursor: pointer;
+  background: #fcba03;
+  color: black ;
+  border-radius:4px ;
+  text-decoration: 0.5s;
+  font-family:himi ;
+}
+button:hover {
+  background:#e79f06;
+  letter-spacing: 3px;
+}
+.btnsearch {
+  display: flex ;
+  justify-content: space-between ;
+}
+.btnsearch button{
+  width: 45%;
+}
+table {
+  width: 100%;
+  text-align: center ;
+  margin: 10px 0px ;
+}
+table th{
+ text-transform:uppercase; 
+}
+th, td{
+  padding: 5px;
+ 
+}
+th{
+  background: #f5efdc;
+  padding: 10px 5px;
+  border-radius: 10px 10px 10px 0px ;
+  box-shadow: 5px 10px 10px #b6b6b6 ;
+  font-size: 20px ;
+}
+td{
+  border: solid thin #e3e4e5f2;
+}
+.no-border{
+  border: none ;
+}
+.number{
+  background:#e3e4e5f2 ;
+}
+.img{
+  z-index: 100 ;
+  font-size: 60px ;
+  position: absolute ;
+}
+.imn{
+    z-index: 100 ;
+  font-size: 60px ;
+  position: absolute ;
+  margin-right: 900px ;
+}
+.crud{
+  z-index: 2 ;
+}
+.imk{
+    z-index: 1 ;
+  font-size: 90px ;
+  position: absolute ;
+  text-align: center ;
+  margin-right: 300px ;
+  opacity: 0.1;
+}
+</style>
+  </head>  
+       <body dir="rtl"> 
+          <div class="img" >📚</div>
+           <div class="imn" >📚</div>
+   <div class="crud">
+     <div class="head">
+       <h2>نظام إدارة بيانات الطلاب </h2>
+     </div>
+     <br />
+     <h4>البيانات الشخصية </h4>
+       <div class="inputs">
+         <input type="text"placeholder="اسم الطالب "id="title">
+         <input type="text"placeholder=" مكان الإقامة "id="noon" >
+         <input type="number"placeholder="رقم الهاتف "id="toom" >
+         <div class="price">
+           <h4 >الرسوم الدراسية </h4>
+           <input onkeyup="getTotal()"type="number"id="price"placeholder="القسط الأول ">
+               <input onkeyup="getTotal()"type="number"id="taxes"placeholder="القسط الثاني ">
+                   <input onkeyup="getTotal()"type="number"id="ads"placeholder="القسط الثالث ">
+                       <input onkeyup="getTotal()"type="number"id="discount"placeholder="خصومات">
+                  
+                       <small id="total">0</small>
+                            <br />
+                 <div class="imk"><h1>
+                   👔
+                 </h1>
+                   
+                 </div>
+                       <h4>تاريخ التسجيل </h4>
+                       <input type="date" id="date"value="mooi"/>
+                       <h4>الفصل الدراسي </h4>
+                       <select id="doon">
+                         <option>لم يتم الاختبار </option>
+                         <option>الصف الأول </option>
+                         <option>الصف الثاني </option>
+                         <option>الصف الثالث </option>
+                         <option>الصف الرابع </option>
+                         <option>الصف الخامس </option>
+                         <option>الصف السادس </option>
+                           <option>الصف السابع </option>
+                         <option>الصف الثامن </option>
+                         <option>الأول ثانوي </option>
+                         <option>الثاني ثانوي </option>
+                         <option>الثالث ثانوي </option>
+                        
+                       </select>
+         </div>
+         <h4>ملاحظات </h4>
+              <input type="text"placeholder="الحالة الصحية "id="categry">
+               <input type="text"placeholder="أخرى"id="opinyns" >
+                   <button id="submit">إضافة </button>
+       </div>
+         <div class="outputs">
+           <div class="searchblock">
+             <input type="text"id="search"onkeyup="searchData(this.value )"placeholder="بحث">
+        
+           <div class="btnsearch">
+             <button id="searchTitle"onclick="getSearchMood(this.id) ">البحث بالاسم </button>
+                <button id="searchCategry"onclick="getSearchMood(this.id)">البحث بالفصل الدراسي </button>
+           </div>
+         </div>
+         <div id="deleteAll">
+           
+         </div>
+         <table>
+           <tr>
+             <th>رقم</th>
+               <th>الإسم   </th>
+                <th>السكن </th>
+                  <th>الهاتف </th>
+                 <th>القسط الأول </th>
+                   <th>القسط الثاني </th>
+                    <th>القسط الثالث </th> 
+                      <th>الخصم</th>
+                        <th>المجموع</th>
+                        <th>تاريخ التسجيل </th>
+                         <th>الفصل الدراسي </th>
+                        <th>الحالة الصحية </th>
+                        <th>أخرى </th>
+                          <th>تعديل</th>
+                            <th>حذف</th>
+           </tr>
+           <tbody id="tbody">
+           </tbody>
+         </table>
+        </div>
+   </div>
+     
+       <script>
+         
+         
+      
+  let title =document.getElementById('title');
+  let noon =document.getElementById('noon');
+  let toom =document.getElementById('toom');
+let price =document.getElementById('price');
+let taxes =document.getElementById('taxes');
+let ads =document.getElementById('ads');
+let discount =document.getElementById('discount');
+let total =document.getElementById('total');
+let date =document.getElementById('date');
+let doon =document.getElementById('doon');
+let categry =document.getElementById('categry');
+let opinyns =document.getElementById('opinyns');
+let submit =document.getElementById('submit');
+
+let mood='create';
+let tmp;
+//git total
+function getTotal(){
+  if(price.value!=''){
+    let result=(+price.value+ +taxes.value+ +ads.value)+ -discount.value;
+    total.innerHTML=result;
+    total.style.background ='#12f16f';
+ 
+  }
+  else{
+     total.innerHTML='';
+       total.style.background ='#fcba03';
+      
+  }
+}
+//creat product
+let datapro;
+if(localStorage.product!=null){
+  datapro=JSON.parse(localStorage.product)
+}
+else{
+  datapro=[];
+}
+
+ submit.onclick=function(){
+  let newpro={
+   title:title.value,
+   noon:noon.value,
+   toom:toom.value,
+   price:price.value,
+   taxes:taxes.value, 
+   ads:ads.value, 
+   discount:discount.value, 
+   total:total.innerHTML, 
+   date:date.value,
+   doon:doon.value,
+   categry:categry.value, 
+   opinyns:opinyns.value, 
+  }
+  if(title.value!=''&& price.value!=''){
+     if(mood ==='create'){
+      if(newpro.count > 0){
+    for(let i =0; i < newpro.count;i++){
+      datapro.push(newpro);} 
+    }else{
+        datapro.push(newpro);
+    }
+  } 
+  else{
+    datapro[  tmp ]= newpro;
+    mood='create';
+    submit.innerHTML='اضافة';
+ 
+  }
+  }
+ 
+
+  
+ 
+ 
+ //save locelatorage
+  localStorage.setItem('product',     JSON.stringify(datapro)  ) 
+   clearData()
+   showData()
+// console.log(datapro)
+}
+
+
+
+
+//clear inputs
+function clearData(){
+  title.value='';
+  noon.value='';
+  toom.value='';
+  price.value='';
+  taxes.value='';
+  ads.value='';
+  discount.value='';
+  total.innerHTML ='';
+  date.value='date';
+  doon.value='class room';
+  categry.value='';
+  opinyns.value='';
+}
+//read
+
+function showData(){
+  getTotal()
+  let table ='';
+  for (let i = 0;i < datapro.length;i++) {
+    table+=
+    `<tr>
+               <td class="number">${i+1}</td>
+                <td>${datapro[i].title}</td>
+                <td>${datapro[i].noon}</td>
+                 <td>${datapro[i].toom}</td>
+                 <td>${datapro[i].price} </td>
+                   <td>${datapro[i].taxes}</td>
+                     <td>${datapro[i].ads}</td>
+                       <td>${datapro[i].discount}</td>  
+                         <td>${datapro[i].total}</td>
+                         <td>${datapro[i].date}</td>
+                          <td>${datapro[i].doon}</td>
+                           <td>${datapro[i].categry}</td>
+                            <td>${datapro[i].opinyns}</td>
+                          <td class="no-border"><button onclick="updateData(${i})"id="update">تعديل</button></td>
+                               <td class ="no-border"><button id="delete"onclick="deleteData(${i})">حذف</button></td>
+             </tr>`
+    ;
+ // console.log(datapro)
+  }
+ document.getElementById('tbody').innerHTML=table;
+ let btnDelete =document.getElementById('deleteAll');
+ if(datapro.length >0){
+   btnDelete.innerHTML=`<button onclick="deleteAll()">حذف الكل(${datapro.length})</button>`
+ }else{
+   btnDelete.innerHTML='';
+ }
+}
+showData()
+
+
+//delete
+
+function deleteData(i){
+ datapro.splice(i,1);
+ localStorage.product=JSON.stringify(datapro);
+ showData()
+}
+function deleteAll(){
+  localStorage.clear()
+  datapro.splice(0)
+  showData()
+}
+
+
+
+//count
+
+
+
+//update 
+function updateData(i){
+ title.value = datapro[i].title;
+ noon.value = datapro[i].noon;
+ toom.value = datapro[i].toom;
+ price.value = datapro[i].price;
+ taxes.value = datapro[i].taxes;
+ ads.value = datapro[i].ads;
+ discount.value = datapro[i].discount;
+ getTotal()
+ date.value=datapro[i].date;
+ doon.value = datapro[i].doon;
+ categry.value = datapro [i].categry;
+ opinyns.value = datapro [i].opinyns;
+ submit.innerHTML='تعديل';
+ mood='update';
+ tmp = i ;
+ scroll({
+   top:0,
+   behavior:'smooth', 
+ })
+} 
+
+
+
+
+
+
+//search 
+let searchMood='title';
+function getSearchMood(id)
+{
+  if(id=='searchTitle'){
+    searchMood='title';
+    search.placeholder ='البحث بالاسم ';
+  }
+  else{
+    searchMood='doon';
+      search.placeholder ='البحث بالنوع ';
+  }
+  search.focus()
+  search.value='';
+  showData()
+}
+function searchData(value){
+  let table='';
+  if(searchMood=='title'){
+    for(let i=0;i < datapro.length;i++){
+      if(datapro[i].title.includes(value)){
+        
+            table+=
+    `<tr>
+               <td class="number">${i+1}</td>
+                <td>${datapro[i].title}</td>
+                 <td>${datapro[i].noon}</td>
+                  <td>${datapro[i].toom}</td>
+                 <td>${datapro[i].price} </td>
+                   <td>${datapro[i].taxes}</td>
+                     <td>${datapro[i].ads}</td>
+                       <td>${datapro[i].discount}</td>  
+                         <td>${datapro[i].total}</td>
+                         <td>${datapro[i].date}</td>
+                          <td>${datapro[i].doon}</td>
+                           <td>${datapro[i].categry}</td>
+                           <td>${datapro[i].opinyns}</td>
+                          <td class="no-border"><button onclick="updateData(${i})"id="update">تعديل</button></td>
+                               <td class ="no-border"><button id="delete"onclick="deleteData(${i})">حذف</button></td>
+             </tr>`
+    ;
+        
+        
+      }
+    }
+  }
+  else{
+      for(let i=0;i < datapro.length;i++){
+      if(datapro[i].doon.includes(value)){
+        
+            table+=
+    `<tr>
+               <td class="number">${i+1}</td>
+                <td>${datapro[i].title}</td>
+                 <td>${datapro[i].noon}</td>
+                  <td>${datapro[i].toom}</td>
+                 <td>${datapro[i].price} </td>
+                   <td>${datapro[i].taxes}</td>
+                     <td>${datapro[i].ads}</td>
+                       <td>${datapro[i].discount}</td>  
+                         <td>${datapro[i].total}</td>
+                         <td>${datapro[i].date}</td>
+                          <td>${datapro[i].doon}</td>
+                           <td>${datapro[i].categry}</td>
+                           <td>${datapro[i].opinyns}</td>
+                          <td class="no-border"><button onclick="updateData(${i})"id="update">تعديل </button></td>
+                               <td class ="no-border"><button id="delete"onclick="deleteData(${i})">حذف</button></td>
+             </tr>`
+    ;
+        
+        
+      }
+    }
+  }
+   document.getElementById('tbody').innerHTML=table;
+}
+
+//clean data document.createElement('input');
+//btn= document.createElement('BUTTON');
+function bot(){
+  alert("hi");
+// document.body.appendChild(btn);
+} 
+
+       </script>
+       <!--
+       <script src="jquery-3.6.0.min.js">
+       </script>  
+       <script src="bootstrap.min.js">
+       </script>  -->
+       </body> 
+       </html>   
